@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME} ${${PROJECT_NAME}Files})
 add_subdirectory(${VENDOR_FOLDER}/glfw)
 target_include_directories(${PROJECT_NAME} PRIVATE ${VENDOR_FOLDER}/glfw/include)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_INCLUDE_VULKAN) # Define GLFW_INCLUDE_VULKAN in code to use vulkan renderer with GLFW
 
 # Add, include and link glm library in to Lava
 add_subdirectory(${VENDOR_FOLDER}/glm)
