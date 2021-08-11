@@ -19,6 +19,11 @@ add_subdirectory(${VENDOR_FOLDER}/glm)
 target_include_directories(${PROJECT_NAME} PRIVATE ${VENDOR_FOLDER}/glm/glm)
 target_link_libraries(${PROJECT_NAME} PRIVATE glm)
 
+# Add, include and link spdlog library in to Lava
+add_subdirectory(${VENDOR_FOLDER}/spdlog)
+target_include_directories(${PROJECT_NAME} PRIVATE ${VENDOR_FOLDER}/spdlog/include)
+target_link_libraries(${PROJECT_NAME} PRIVATE spdlog)
+
 # Find, include and link Vulkan library in to Lava
 find_package(Vulkan REQUIRED)
 target_include_directories(${PROJECT_NAME} PRIVATE ${Vulkan_INCLUDE_DIRS})
