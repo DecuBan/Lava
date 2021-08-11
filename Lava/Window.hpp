@@ -18,6 +18,9 @@ namespace Lava
 
         inline bool IsClosed() const { return glfwWindowShouldClose(m_Window); }
 
+        static void InitWindowManager();
+        static void TerminateWindowManager();
+
     private:
         int m_Width;
         int m_Height;
