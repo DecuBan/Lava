@@ -1,0 +1,4 @@
+# Binaries
+build/
+# Visual studio code settings
+.vscode/
