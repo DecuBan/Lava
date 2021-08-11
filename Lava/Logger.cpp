@@ -10,7 +10,7 @@ namespace Lava
     {
         spdlog::set_pattern("%^[%T] %n: %v%$");
 
-        s_Logger = spdlog::stdout_color_mt("App");
+        s_Logger = spdlog::stdout_color_mt("Lava");
         s_Logger->set_level(spdlog::level::level_enum::trace);
     }
 }
