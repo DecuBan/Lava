@@ -9,6 +9,12 @@ project(Lava CXX)
 file(GLOB_RECURSE ${PROJECT_NAME}Files ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/**.cpp ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/**.hpp)
 add_executable(${PROJECT_NAME} ${${PROJECT_NAME}Files})
 
+IF(CMAKE_BUILD_TYPE MATCHES Debug)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE LAVA_DEBUG)
+ELSEIF(CMAKE_BUILD_TYPE MATCHES Release)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE LAVA_RELEASE)
+ENDIF()
+
 # Add, include and link glfw library in to Lava
 add_subdirectory(${VENDOR_FOLDER}/glfw)
 target_include_directories(${PROJECT_NAME} PRIVATE ${VENDOR_FOLDER}/glfw/include)
