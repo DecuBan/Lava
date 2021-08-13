@@ -20,6 +20,9 @@ namespace Lava
         std::vector<const char *> GetRequiredExtensions();
         bool CheckValidationLayerSupport();
         void SetupDebugMessenger();
+        void PickPhysicalDevice();
+
+        bool IsDeviceSuitable(VkPhysicalDevice device);
 
         static VKAPI_ATTR VkBool32 VKAPI_CALL VkDebugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
                                                               VkDebugUtilsMessageTypeFlagsEXT messageType,
@@ -30,7 +33,7 @@ namespace Lava
                                               const VkDebugUtilsMessengerCreateInfoEXT *pCreateInfo,
                                               const VkAllocationCallbacks *pAllocator,
                                               VkDebugUtilsMessengerEXT *pDebugMessenger);
-        
+
         void DestroyDebugUtilsMessengerEXT(VkInstance instance,
                                            VkDebugUtilsMessengerEXT debugMessenger,
                                            const VkAllocationCallbacks *pAllocator);
@@ -41,8 +44,10 @@ namespace Lava
         Window *m_Window;
 
         VkInstance m_VkInstance;
-        const std::vector<const char *> m_VkValidationLayers = {"VK_LAYER_KHRONOS_validation"};
 
+        VkPhysicalDevice m_VkPhysicalDevice = VK_NULL_HANDLE;
+
+        const std::vector<const char *> m_VkValidationLayers = {"VK_LAYER_KHRONOS_validation"};
         VkDebugUtilsMessengerEXT m_VkDebugMessenger;
 
 #ifdef LAVA_DEBUG
